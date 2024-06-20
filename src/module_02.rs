@@ -23,4 +23,16 @@ pub mod collection_fundamentals {
             println!("{name} rating: {rating}");
         }
     }
+
+    pub fn tuples_arrays_and_slices() {
+        // tuples can hold many types of data in itself
+        let tuple = (1, 2, "Hello World", 3.14, false, vec![1, 2, 3], [4, 5, 6]);
+        println!("tuple: {:?}", tuple);
+
+        let array = [1, 3, 5, 7, 9, 11, 13, 17, 19];
+        println!("array: {:?}", array);
+
+        let slice = &array[1..3];
+        println!("slice: {:?}", slice);
+    }
 }
