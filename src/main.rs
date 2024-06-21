@@ -13,5 +13,6 @@ fn main() {
     // collection_fundamentals::demo_collection_fundamentals();
 
     // Module 03 - Working With Sequences
-    working_with_sequences::useful_vec_functions();
+    // working_with_sequences::useful_vec_functions();
+    working_with_sequences::demo_vec();
 }
