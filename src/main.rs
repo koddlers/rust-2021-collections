@@ -2,11 +2,13 @@
 
 mod module_02;
 mod module_03;
+mod module_04;
 
 use module_02::collection_fundamentals;
 use module_03::working_with_sequences;
 use module_03::working_with_sequences_v2;
 use module_03::working_with_sequences_v3;
+use module_04::using_maps_and_sets;
 
 fn main() {
     // Module 02 - Collection Fundamentals
@@ -18,5 +20,8 @@ fn main() {
     // working_with_sequences::useful_vec_functions();
     // working_with_sequences::demo_vec();
     // working_with_sequences_v2::demo_vecdeque();
-    working_with_sequences_v3::demo_linkedlist();
+    // working_with_sequences_v3::demo_linkedlist();
+
+    // Module 04 - Using Maps and Sets
+    using_maps_and_sets::demo_hashmap_and_btreemap();
 }
