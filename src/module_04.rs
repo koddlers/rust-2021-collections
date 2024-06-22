@@ -98,4 +98,175 @@ pub mod using_maps_and_sets {
         coffee_descriptions.insert(Coffee { id: 6000, count: 50 }, "Dark, nutty");
         println!("After insertion: {:?}\n", coffee_descriptions);
     }
+
+    pub fn useful_map_functions() {
+        // HashMap::new()
+        let mut new_map = HashMap::new();
+
+        new_map.insert("Potato", 35.0);
+        new_map.insert("Rice", 85.0);
+        new_map.insert("Chicken", 285.0);
+        new_map.insert("Beef", 1000.0);
+
+        for (item, price) in new_map.clone() {
+            println!("{item} costs {price:.2} tk");
+        }
+        println!();
+
+        // HashMap::from()
+        let mut from_map = HashMap::from([
+            ("Latte", 320.0),
+            ("Honey Latte", 350.0),
+            ("Cappuccino", 280.0),
+            ("Black Coffee", 120.0)
+        ]);
+
+        for (coffee, cost) in from_map.clone() {
+            println!("Coffee: {coffee} costs {cost} tk");
+        }
+        println!();
+
+        // HashMap::with_capacity()
+        let mut cap_map: HashMap<&str, f64> = HashMap::with_capacity(5);
+
+        println!("`cap_map` capacity (before): {}", cap_map.capacity());
+        cap_map.extend(new_map);
+        cap_map.extend(from_map);
+        println!("`cap_map` capacity (after): {}", cap_map.capacity());
+        println!();
+
+        println!("items in the `cap_map`");
+        for (key, val) in cap_map.clone() {
+            println!("{key}::{val}");
+        }
+        println!();
+
+        // `BTreeMap` has only `new` and `from`
+        // BTreeMap::new()
+        let mut new_btr = BTreeMap::new();
+
+        new_btr.insert(1, "January");
+        new_btr.insert(2, "February");
+        new_btr.insert(3, "March");
+        new_btr.insert(4, "April");
+        new_btr.insert(5, "May");
+        new_btr.insert(6, "June");
+        new_btr.insert(7, "July");
+        new_btr.insert(8, "August");
+        new_btr.insert(9, "September");
+        new_btr.insert(10, "October");
+        new_btr.insert(11, "November");
+        new_btr.insert(12, "December");
+
+        for (num, mon) in new_btr.clone() {
+            println!("{mon} is the month number \t{num}");
+        }
+        println!();
+
+        // BTreeMap::from()
+        let mut from_btr = BTreeMap::from([
+            ("Latte", 320.0),
+            ("Honey Latte", 350.0),
+            ("Cappuccino", 280.0),
+            ("Black Coffee", 120.0),
+            ("Mocha", 150.0)
+        ]);
+
+        for (coffee, cost) in from_btr.clone() {
+            println!("Coffee {coffee} costs {cost:.2} TK");
+        }
+        println!();
+    }
+
+    pub fn common_hashmap_operations() {
+        // Operations
+        // let mut map = HashMap::new();
+        // map.clear();
+        // map.len();
+        // map.insert("key", "value");
+        // map.get("key");     // returns an `Option`
+        // map.get_mut("key"); // returns an `Option` that can mutate
+        // map.remove("key");
+        // map.keys();     // returns an iterator that allows looping over the map keys randomly
+        // map.values();   // returns an iterator that allows looping over the map values randomly
+        // map.values_mut();   // returns an iterator that allows looping over the map values
+        //                        randomly while allowing mutation
+        // map.into_keys().collect();  // 1
+        // map.into_values().collect();    // this and 1 does the same as the above functions,
+        //                                    but they cause the map to be unusable
+        // map.get_key_value("key");   // returns the key-value pair from the key as Option
+
+        let mut my_map: HashMap<&str, f32> = HashMap::new();
+
+        my_map.clear();
+        println!("(Before) `my_map` has a capacity of {}", my_map.len());
+
+        // if the key already exists in the map, `insert()` will update the value of the key
+        my_map.insert("Latte", 3.50);
+        println!("(After) `my_map` has a capacity of {}", my_map.len());
+
+        let koffee = "Latte";
+        let coffee = my_map.get(koffee);
+        match coffee {
+            None => println!("No koffee"),
+            Some(price) => println!("koffee costs ${price:.2}"),
+        }
+
+        let mut_coffee = my_map.get_mut(koffee);
+        match mut_coffee {
+            None => println!("No KOFFEEEEE!"),
+            Some(price) => {
+                *price = 4.50;
+                println!("New price of Koffee is ${price:.2}");
+            }
+        }
+        println!("Checking for mutation: {:?}", my_map);
+        println!("...AND the value is mutated\n");
+
+        my_map.remove(koffee);
+        println!("Checking for removal: {:?}", my_map);
+        println!("yes the Koffee is gone\n");
+
+        // re-populate
+        my_map.insert("Potato", 35.0);
+        my_map.insert("Rice", 85.0);
+        my_map.insert("Chicken", 285.0);
+        my_map.insert("Beef", 1000.0);
+
+        println!("keys: {:?}", my_map.keys());
+        println!("values: {:?}", my_map.values());
+        println!("(key, value): {:?}", my_map.get_key_value("Potato"));
+    }
+
+    pub fn btreemap_common_operations() {
+        let mut btree = BTreeMap::new();
+
+        btree.insert("Potato", 35.0);
+        btree.insert("Rice", 85.0);
+        btree.insert("Chicken", 285.0);
+        btree.insert("Beef", 1000.0);
+
+        println!("{:?}", btree.first_entry());
+        println!("{:?}", btree.first_entry().unwrap());
+        println!();
+
+        println!("{:?}", btree.last_entry());
+        println!("{:?}", btree.last_entry().unwrap());
+        println!();
+
+        println!("btree (before): {:?}", btree);
+        btree.pop_first();
+        println!("btree (after): {:?}", btree);
+        println!();
+
+        println!("btree (before): {:?}", btree);
+        btree.pop_last();
+        println!("btree (after): {:?}", btree);
+        println!();
+
+        let mut other_map = BTreeMap::new();
+        other_map.insert("test", 3.14);
+        btree.append(&mut other_map);
+        println!("btree (after append): {:?}", btree);
+    }
 }

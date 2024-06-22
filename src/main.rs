@@ -23,5 +23,8 @@ fn main() {
     // working_with_sequences_v3::demo_linkedlist();
 
     // Module 04 - Using Maps and Sets
-    using_maps_and_sets::demo_hashmap_and_btreemap();
+    // using_maps_and_sets::demo_hashmap_and_btreemap();
+    // using_maps_and_sets::useful_map_functions();
+    // using_maps_and_sets::common_hashmap_operations();
+    using_maps_and_sets::btreemap_common_operations();
 }
