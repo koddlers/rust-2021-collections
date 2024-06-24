@@ -26,5 +26,9 @@ fn main() {
     // using_maps_and_sets::demo_hashmap_and_btreemap();
     // using_maps_and_sets::useful_map_functions();
     // using_maps_and_sets::common_hashmap_operations();
-    using_maps_and_sets::btreemap_common_operations();
+    // using_maps_and_sets::btreemap_common_operations();
+    // using_maps_and_sets::useful_hashset_functions();
+    // using_maps_and_sets::useful_btreeset_functions();
+    // using_maps_and_sets::hashset_common_operations();
+    using_maps_and_sets::btreeset_common_operations();
 }

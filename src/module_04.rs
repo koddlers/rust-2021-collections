@@ -1,7 +1,6 @@
 pub mod using_maps_and_sets {
     use std::cmp::Ordering;
-    use std::collections::HashMap;
-    use std::collections::BTreeMap;
+    use std::collections::{BTreeMap, BTreeSet, HashMap, HashSet};
 
     // Hash, Eq, PartialEq needed to use this struct as the custom key to a HashMap
     #[derive(Debug, PartialEq, Hash, Eq)]
@@ -268,5 +267,150 @@ pub mod using_maps_and_sets {
         other_map.insert("test", 3.14);
         btree.append(&mut other_map);
         println!("btree (after append): {:?}", btree);
+    }
+
+    pub fn useful_hashset_functions() {
+        // `HashSet` doesn't maintain insertion order
+        let mut animals = HashSet::new();
+
+        animals.insert("Lion");
+        animals.insert("Tiger");
+        animals.insert("Horse");
+        animals.insert("Turtle");
+        animals.insert("Tiger");
+        animals.insert("Tiger");
+
+        println!("There are {} items in the `animals` HashSet", animals.len());
+        println!("Items in the `animals` set: {:?}\n", animals);
+
+        let mut coffees = HashSet::from([
+            "Latte",
+            "Mocha",
+            "Cappuccino",
+            "Latte",
+        ]);
+
+        println!("There are {} items in the `coffees` HashSet", coffees.len());
+        println!("Items in the `coffees` set: {:?}\n", coffees);
+
+        let mut capaset: HashSet<i32> = HashSet::with_capacity(5);
+        println!("capaset.len() (before): {}", capaset.len());
+        println!("capaset.capacity() (before): {}", capaset.capacity());
+
+        capaset.insert(1);
+        capaset.insert(3);
+        capaset.insert(5);
+        capaset.insert(7);
+        capaset.insert(9);
+        capaset.insert(9);
+        capaset.insert(9);
+
+        println!("capaset.len() (before): {}", capaset.len());
+        println!("capaset.capacity() (before): {}", capaset.capacity());
+        println!("capaset: {:?}\n", capaset);
+    }
+
+    pub fn useful_btreeset_functions() {
+        // BTreeSet are initialized the same way as HashSet,
+        // except for the `with_capacity` method is not available
+        let mut btree = BTreeSet::new();
+
+        btree.insert("Palm");
+        btree.insert("Mango");
+        btree.insert("Lychee");
+        btree.insert("Dates");
+        btree.insert("Oranges");
+        btree.insert("Oranges");
+        btree.insert("Oranges");
+
+        println!("btree.len(): {}", btree.len());
+        println!("btree: {:?}\n", btree);
+
+        let mut btree_from = BTreeSet::from([
+            "Latte",
+            "Mocha",
+            "Cappuccino",
+            "Latte",
+            "Latte",
+            "Latte",
+        ]);
+
+        println!("btree_from.len(): {}", btree_from.len());
+        println!("btree_from: {:?}\n", btree_from);
+    }
+
+    pub fn hashset_common_operations() {
+        let mut hashset = HashSet::new();
+
+        hashset.insert("Latte");
+        hashset.insert("Mocha");
+        hashset.insert("Cappuccino");
+        hashset.insert("Latte");
+        hashset.insert("Latte");
+
+        println!("hashset length: {}", hashset.len());  // get count of values in the set
+        println!("hashset: {:?}\n", hashset);
+
+        // remove all values from the set
+        hashset.clear();
+        println!("After `hashset.clear()`");
+        println!("hashset length: {}", hashset.len());
+        println!("hashset: {:?}\n", hashset);
+
+        hashset.insert("Latte");
+        hashset.insert("Cappuccino");
+        println!("After `hashset.insert()`");
+        println!("hashset length: {}", hashset.len());
+        println!("hashset: {:?}\n", hashset);
+
+        hashset.remove("Latte");
+        println!("After `hashset.remove()`");
+        println!("hashset length: {}", hashset.len());
+        println!("hashset: {:?}\n", hashset);
+
+        println!("hashset.contains(`Latte`): {}\n", hashset.contains("Latte"));
+
+        // Common operations
+        // let mut set1 = HashSet::new();
+        // let mut set2 = HashSet::new();
+        //
+        // set1.difference(&set2);
+        // set1.intersection(&set2);
+        //
+        // set1.is_subset(&set2);
+        // set1.is_superset(&set2);
+        // set1.is_disjoint(&set2);
+        // set1.symmetric_difference(&set2);
+        // set1.union(&set2);
+    }
+
+    pub fn btreeset_common_operations() {
+        let mut btree = BTreeSet::new();
+
+        btree.insert("Palm");
+        btree.insert("Mango");
+        btree.insert("Lychee");
+        btree.insert("Dates");
+        btree.insert("Oranges");
+        btree.insert("Oranges");
+        btree.insert("Oranges");
+
+        println!("First element: {:?}", btree.first());
+        println!("Last element: {:?}\n", btree.last());
+
+        println!("btree (before: pop_first()): {:?}", btree);
+        btree.pop_first();
+        println!("btree (after: pop_first()): {:?}\n", btree);
+
+        println!("btree (before: pop_last()): {:?}", btree);
+        btree.pop_last();
+        println!("btree (after: pop_last()): {:?}\n", btree);
+
+        let mut other_set = BTreeSet::new();
+        other_set.insert("Apples");
+
+        println!("btree (before: append()): {:?}", btree);
+        btree.append(&mut other_set);
+        println!("btree (after: append()): {:?}\n", btree);
     }
 }
