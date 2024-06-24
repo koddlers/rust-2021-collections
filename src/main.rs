@@ -9,6 +9,7 @@ use module_03::working_with_sequences;
 use module_03::working_with_sequences_v2;
 use module_03::working_with_sequences_v3;
 use module_04::using_maps_and_sets;
+use module_04::using_maps_and_sets_v2;
 
 fn main() {
     // Module 02 - Collection Fundamentals
@@ -30,5 +31,6 @@ fn main() {
     // using_maps_and_sets::useful_hashset_functions();
     // using_maps_and_sets::useful_btreeset_functions();
     // using_maps_and_sets::hashset_common_operations();
-    using_maps_and_sets::btreeset_common_operations();
+    // using_maps_and_sets::btreeset_common_operations();
+    using_maps_and_sets_v2::demo_hashset_and_btreeset();
 }
