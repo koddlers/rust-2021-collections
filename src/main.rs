@@ -14,6 +14,7 @@ use module_04::using_maps_and_sets;
 use module_04::using_maps_and_sets_v2;
 use module_05::working_with_strings;
 use module_06::managing_collections_in_memory;
+use module_06::managing_collections_in_memory_demo;
 
 fn main() {
     // Module 02 - Collection Fundamentals
@@ -46,5 +47,6 @@ fn main() {
 
     // Module 06 - Managing Collections in Memory
     // managing_collections_in_memory::collections_and_memory_management();
-    managing_collections_in_memory::moving_copying_and_cloning_collections();
+    // managing_collections_in_memory::moving_copying_and_cloning_collections();
+    managing_collections_in_memory_demo::demo_cloning_and_copying_collections();
 }
