@@ -39,5 +39,6 @@ fn main() {
     // Module 05 - Working With Strings
     // working_with_strings::introduction_to_strings();
     // working_with_strings::useful_string_functions();
-    working_with_strings::primitive_string();
+    // working_with_strings::primitive_string();
+    working_with_strings::demo_strings();
 }
