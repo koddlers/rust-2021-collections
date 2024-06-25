@@ -4,6 +4,7 @@ mod module_02;
 mod module_03;
 mod module_04;
 mod module_05;
+mod module_06;
 
 use module_02::collection_fundamentals;
 use module_03::working_with_sequences;
@@ -12,6 +13,7 @@ use module_03::working_with_sequences_v3;
 use module_04::using_maps_and_sets;
 use module_04::using_maps_and_sets_v2;
 use module_05::working_with_strings;
+use module_06::managing_collections_in_memory;
 
 fn main() {
     // Module 02 - Collection Fundamentals
@@ -40,5 +42,8 @@ fn main() {
     // working_with_strings::introduction_to_strings();
     // working_with_strings::useful_string_functions();
     // working_with_strings::primitive_string();
-    working_with_strings::demo_strings();
+    // working_with_strings::demo_strings();
+
+    // Module 06 - Managing Collections in Memory
+    managing_collections_in_memory::collections_and_memory_management();
 }
