@@ -37,5 +37,7 @@ fn main() {
     // using_maps_and_sets_v2::demo_hashset_and_btreeset();
 
     // Module 05 - Working With Strings
-    working_with_strings::introduction_to_strings();
+    // working_with_strings::introduction_to_strings();
+    // working_with_strings::useful_string_functions();
+    working_with_strings::primitive_string();
 }
