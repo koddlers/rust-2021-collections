@@ -48,5 +48,6 @@ fn main() {
     // Module 06 - Managing Collections in Memory
     // managing_collections_in_memory::collections_and_memory_management();
     // managing_collections_in_memory::moving_copying_and_cloning_collections();
-    managing_collections_in_memory_demo::demo_cloning_and_copying_collections();
+    // managing_collections_in_memory_demo::demo_cloning_and_copying_collections();
+    managing_collections_in_memory_demo::demo_capacity_management();
 }

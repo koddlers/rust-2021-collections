@@ -124,4 +124,83 @@ pub mod managing_collections_in_memory_demo {
         println!("Cloned greeting after alteration: {:?}", cloned_string);
         println!("Moved greeting after alteration: {:?}\n", moved_string);
     }
+
+    pub fn demo_capacity_management() {
+        // Creating collections with capacity
+        println!("Vec capacity management:");
+        let mut coffees: Vec<Coffee> = Vec::with_capacity(100);
+        println!("Capacity is {} | Length is {}", coffees.capacity(), coffees.len());
+
+        for n in 1..76 {
+            coffees.push(Coffee { id: n, count: n * 10 });
+        };
+        println!("Capacity is {} | Length is {}", coffees.capacity(), coffees.len());
+
+        for n in 1..26 {
+            coffees.push(Coffee { id: n, count: n * 10 });
+        };
+        println!("Capacity is {} | Length is {}", coffees.capacity(), coffees.len());
+
+        for n in 1..26 {
+            coffees.push(Coffee { id: n, count: n * 10 });
+        };
+
+        // On my machine, a new allocation occurs here - it over-allocates
+        println!("Capacity is {} | Length is {}", coffees.capacity(), coffees.len());
+
+        // Let's shrink it!
+        coffees.shrink_to_fit();
+
+        // This code is commented because the capacity does not change when we shrink it if we
+        // call 'reserve()' just afterwards!
+
+        // We know more coffees are coming in - let's make a new allocation happen beforehand!
+        // coffees.reserve(100);
+        // println!("Capacity is {} | Length is {}", coffees.capacity(), coffees.len());
+
+        println!("Capacity is {} | Length is {}", coffees.capacity(), coffees.len());
+
+
+        // HashMap capacity management!
+        println!("\nHashMap capacity management:");
+        let mut coffee_map: HashMap<String, Coffee> = HashMap::with_capacity(100);
+
+        // Note that the capacity is more than we asked for!
+        println!("Capacity is {} | Length is {}", coffee_map.capacity(), coffee_map.len());
+
+        for n in 1..76 {
+            coffee_map.insert(
+                "Coffee".to_owned() + n.to_string().as_str(),
+                Coffee { id: n, count: n * 10 },
+            );
+        };
+        println!("Capacity is {} | Length is {}", coffee_map.capacity(), coffee_map.len());
+
+        for n in 76..101 {
+            coffee_map.insert(
+                "Coffee".to_owned() + n.to_string().as_str(),
+                Coffee { id: n, count: n * 10 },
+            );
+        };
+        println!("Capacity is {} | Length is {}", coffee_map.capacity(), coffee_map.len());
+
+        for n in 101..151 {
+            coffee_map.insert(
+                "Coffee".to_owned() + n.to_string().as_str(),
+                Coffee { id: n, count: n * 10 },
+            );
+        };
+
+        // On my machine, a new allocation occurs here!
+        println!("Capacity is {} | Length is {}", coffee_map.capacity(), coffee_map.len());
+
+        // Let's shrink it!
+        coffee_map.shrink_to_fit();
+        println!("Capacity is {} | Length is {}", coffee_map.capacity(), coffee_map.len());
+
+        // We know more coffee entries are coming in - let's make a new allocation happen beforehand!
+        coffee_map.reserve(100);
+        println!("Capacity is {} | Length is {}", coffee_map.capacity(), coffee_map.len());
+        // This call to reserve on the HashMap doubled its capacity on my system!
+    }
 }
